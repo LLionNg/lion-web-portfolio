@@ -37,7 +37,7 @@ export default class RamenShop
         this.floor = this.model.children.find(child => child.name === 'floor')
         this.misc = this.model.children.find(child => child.name === 'miscJoined')
         this.graphics = this.model.children.find(child => child.name === 'graphicsJoined') 
-        this.jesseZhouJoined = this.model.children.find(child => child.name === 'jesseZhouJoined')
+        this.lionJoined = this.model.children.find(child => child.name === 'lionJoined')
 
         // Moving Objects
         this.fan1 = this.model.children.find(child => child.name === 'fan1') 
@@ -50,7 +50,6 @@ export default class RamenShop
         this.projectsWhite = this.model.children.find(child => child.name === 'projectsWhite')
         this.articlesRed = this.model.children.find(child => child.name === 'articlesRed')
         this.articlesWhite = this.model.children.find(child => child.name === 'articlesWhite')
-        this.jZhouBlack = this.model.children.find(child => child.name === 'jZhouBlack')
         this.jZhouPink = this.model.children.find(child => child.name === 'jZhouPink')
         this.aboutMeBlack = this.model.children.find(child => child.name === 'aboutMeBlack')
         this.aboutMeBlue = this.model.children.find(child => child.name === 'aboutMeBlue')
@@ -114,7 +113,7 @@ export default class RamenShop
             this.floor.material = this.materials.floorMaterial
             this.misc.material = this.materials.miscMaterial
             this.graphics.material = this.materials.graphicsMaterial
-            this.jesseZhouJoined.material = this.materials.whiteSignMaterial
+            this.lionJoined.material = this.materials.whiteSignMaterial
 
             // Moving Objects
             this.fan1.material = this.materials.fanMatcapMaterial
@@ -127,7 +126,6 @@ export default class RamenShop
             this.projectsWhite.material = this.materials.whiteSignMaterial
             this.articlesWhite.material = this.materials.whiteSignMaterial
             this.articlesRed.material = this.materials.redSignMaterial
-            this.jZhouBlack.material = this.materials.blackSignMaterial
             this.jZhouPink.material = this.materials.pinkSignMaterial
             this.aboutMeBlack.material = this.materials.blackSignMaterial
             this.aboutMeBlue.material = this.materials.blueSignMaterial

@@ -316,7 +316,7 @@ export default class RayCaster
             this.objectsToTest = [
                 //menu
                 this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
-                this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
+                this.ramenShop.jZhouPink,
                 this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                 this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
                 this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
@@ -348,7 +348,7 @@ export default class RayCaster
                 this.ramenShop.floor,
                 this.ramenShop.misc,
                 this.ramenShop.graphics,
-                this.ramenShop.jesseZhouJoined,
+                this.ramenShop.lionJoined,
 
                 //hologram
                 this.hologramHitBox,
@@ -387,7 +387,7 @@ export default class RayCaster
             {
                 this.objectsToTest.push(
                     this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
-                    this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
+                    this.ramenShop.jZhouPink,
                     this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                     this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
                     this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
@@ -472,10 +472,9 @@ export default class RayCaster
                     this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
                     break
 
-                case this.ramenShop.jZhouBlack:
                 case this.ramenShop.jZhouPink:
                 case this.jZhouHitBox:
-                    this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
+                    this.controller.menuControls.jZhou(this.ramenShop.lionJoined, 'black')
                     break
 
                 case this.ramenShop.articlesWhite:
