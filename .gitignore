@@ -1,2 +1,7 @@
 .vercel
 node_modules
+
+# local texture-editing assets (never commit): source preview images + generated previews
+image*.png
+image*.jpg
+*_preview.png
