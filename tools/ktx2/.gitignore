@@ -1,0 +1,4 @@
+node_modules/
+# derived/large artifacts produced by the work scripts (re-creatable on demand)
+work/*.png
+work/*.ktx2

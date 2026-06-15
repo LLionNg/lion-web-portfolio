@@ -1,0 +1,37 @@
+{
+  "2": {
+    "title": "RAG for E-Commerce",
+    "desc": "Built and deployed a domain-specific Retrieval-Augmented Generation pipeline for e-commerce: semantic chunking and pgvector similarity search over PostgreSQL with streaming LLM chat responses. Delivered full-stack — frontend UI plus API and concurrent load testing — and shipped to production on Kubernetes via GitOps (ArgoCD) for self-healing, scalable serving.",
+    "skills": "Python, RAG, pgvector, Kubernetes, ArgoCD"
+  },
+  "3": {
+    "title": "TensorRT Inference Optimization",
+    "desc": "Optimized deep-learning inference with NVIDIA TensorRT, achieving a 4-5x latency speedup over the baseline runtime. Applied FP16 mixed-precision quantization, operator and layer fusion, and dynamic batching to maximize GPU throughput, with accuracy validated against the original model for production serving.",
+    "skills": "Python, PyTorch, TensorRT, ONNX, CUDA"
+  },
+  "4": {
+    "title": "Thai Image Captioning",
+    "desc": "Adapted the state-of-the-art mPLUG vision-language model to support Thai-language image captioning. Implemented a custom BertTokenizer and BertDecoder to handle Thai script and sub-word segmentation, then fine-tuned the multimodal encoder-decoder to generate fluent, context-aware captions from input images.",
+    "skills": "Python, PyTorch, Hugging Face, mPLUG, BERT"
+  },
+  "5": {
+    "title": "Extractive Question Answering",
+    "desc": "Built a fine-tuning pipeline for extractive question answering on a BERT-base language model. Answer spans are located within a passage by predicting start and end token positions, trained with span-based position encoding over context. Covers data preprocessing, tokenization, and evaluation on context-based QA datasets.",
+    "skills": "Python, PyTorch, Hugging Face, BERT, Transformers"
+  },
+  "6": {
+    "title": "AI Flashcard Generator",
+    "desc": "An AI-driven flashcard generation system and first-place winner of the Llama 3 Hackathon. Uses Llama 3 with Retrieval-Augmented Generation to extract content from uploaded PDFs and convert it into personalized, interactive study cards, with semantic retrieval, automatic question-answer generation, and integrated progress tracking.",
+    "skills": "Python, Llama 3, RAG, LangChain, Embeddings"
+  },
+  "7": {
+    "title": "Efficient Chess AI",
+    "desc": "A memory-constrained chess engine built for the FIDE & Google Efficient Chess AI Challenge, where strict memory limits rule out large engines. Generated large-scale self-play and hand-crafted-evaluation datasets to train a compact neural-network position evaluator paired with search. Ranked 500 of 1120 entries.",
+    "skills": "Python, PyTorch, NumPy, python-chess, Kaggle"
+  },
+  "8": {
+    "title": "AI To-Do List Agent",
+    "desc": "An LLM agent skill that automates task tracking and prioritization. Provides custom tools for the OpenClaw agent to read Excel spreadsheets and fetch LINE group-chat history, then summarizes outstanding tasks and ranks them by priority from conversation context. Deployed as a gateway service with a Python tool layer.",
+    "skills": "Python, LLM Agents, openpyxl, REST API, LINE API"
+  }
+}

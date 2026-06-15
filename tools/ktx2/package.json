@@ -1,0 +1,11 @@
+{
+  "name": "ramen-shop-ktx2-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline KTX2 (re)encoding tooling for editing project screen textures. Build-time only; not part of the web app bundle.",
+  "type": "module",
+  "dependencies": {
+    "ktx2-encoder": "^0.5.3",
+    "pngjs": "^7.0.0"
+  }
+}

@@ -1,2 +1,5 @@
 .vercel
 node_modules
+
+# local texture-edit preview images (throwaway, not part of the app)
+*_preview.png
