@@ -1,9 +1,10 @@
-import sys, json
+import sys, json, os
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
 N = sys.argv[1]
-data = json.load(open("projects.json"))[N]
+data = json.load(open("projects.json", encoding="utf-8"))[N]
 SRC = f"project{N}_orig.png"
 OUT = f"project{N}_edited.png"
 BOLD = "C:/Windows/Fonts/calibrib.ttf"
@@ -11,8 +12,8 @@ REG  = "C:/Windows/Fonts/calibri.ttf"
 
 im = Image.open(SRC).convert("RGB")
 a = np.asarray(im).astype(np.int32)
-def sample(x0,y0,x1,y1): return tuple(int(v) for v in np.mean(a[y0:y1,x0:x1].reshape(-1,3),0))
-BG   = sample(200,516,700,527)        # clean mint band below the heading
+def sample(x0,y0,x1,y1): return tuple(int(v) for v in np.median(a[y0:y1,x0:x1].reshape(-1,3),0))
+BG   = sample(762,545,800,690)        # clean mint at card right margin (robust, median)
 TEXT = (12,40,27)
 PILL = (17,18,18)
 d = ImageDraw.Draw(im)
@@ -74,5 +75,30 @@ for ks in range(19,14,-1):
     if d.textlength(data["skills"],font=f_sk)<=625: break
 d.text((194, 657), data["skills"], font=f_sk, fill=TEXT)
 
+# ===== SCREENSHOT PANEL: replace with project image (contain-fit, rounded, covers green bleed) =====
+PX0,PY0,PX1,PY1 = 277,100,815,370
+pw,ph = PX1-PX0, PY1-PY0
+imgf = data.get("image"); img_status="img=NONE"
+if imgf and os.path.exists(os.path.join(ROOT,imgf)):
+    src = Image.open(os.path.join(ROOT,imgf)).convert("RGB")
+    scale = min(pw/src.width, ph/src.height)
+    nw,nh = max(1,round(src.width*scale)), max(1,round(src.height*scale))
+    src_r = src.resize((nw,nh), Image.LANCZOS)
+    bgc = tuple(int(v) for v in np.median(np.asarray(src)[:4,:,:].reshape(-1,3),0))  # top-edge bg for bars
+    panel = Image.new("RGB",(pw,ph), bgc)
+    panel.paste(src_r, ((pw-nw)//2,(ph-nh)//2))
+    mask = Image.new("L",(pw,ph),0)
+    ImageDraw.Draw(mask).rounded_rectangle([0,0,pw-1,ph-1], radius=12, fill=255)
+    im.paste(panel,(PX0,PY0),mask)
+    img_status=f"img={imgf}({src.width}x{src.height})"
+else:
+    img_status=f"img=MISSING({imgf})"
+
+# cover the small-card right "tab" peeking below the panel with real dotted-chroma
+# (blends in the flat preview; chroma is keyed out in-app so the card edge reads clean)
+# hide the wide background band where it peeks out below the screenshot panel / right of the small card
+sw = im.crop((278, 400, 815, 423))   # chroma from the gap just below the band, same columns (phase-aligned)
+im.paste(sw, (278, 371))
+
 im.save(OUT)
-print(f"project{N}: '{data['title']}' small={sz}({len(sl)}ln) head={hs} desc={ds}({len(dl)}ln) skill={ks} | cardBottom={BIG_BOT} smallBottom={SMALL_BOT}")
+print(f"project{N}: '{data['title']}' small={sz}({len(sl)}ln) head={hs} desc={ds}({len(dl)}ln) skill={ks} | BG={BG} cardBot={BIG_BOT} | {img_status}")
